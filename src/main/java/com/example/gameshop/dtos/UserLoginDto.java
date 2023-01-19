@@ -9,19 +9,16 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserRegisterDto {
+public class UserLoginDto {
     @NotNull
-    @Email(message = "Incorrect email.")
+    @Email(message = "Incorrect username / password")
     private String email;
 
-    @Pattern(regexp = "^[A-Za-z1-9]{6,}$", message = "Password not valid")
+    @Pattern(regexp = "^[A-Za-z1-9]{6,}$", message = "Incorrect username / password")
     @NotNull
     private String password;
-
-    @NotNull(message = "Full name must not be empty")
-    private String fullName;
 }

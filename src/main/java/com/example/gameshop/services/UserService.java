@@ -1,9 +1,12 @@
 package com.example.gameshop.services;
 
-import com.example.gameshop.entities.User;
+import com.example.gameshop.dtos.UserLoginDto;
+import com.example.gameshop.dtos.UserRegisterDto;
 
 public interface UserService {
-    User registerUser(User user);
+    void registerUser(UserRegisterDto userRegisterDto);
 
-    User loginUser(String username, String password);
+    void loginUser(UserLoginDto userLoginDto);
+
+    void logout();
 }

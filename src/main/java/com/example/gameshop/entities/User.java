@@ -6,9 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -17,22 +14,18 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User extends BaseEntity {
-    @NotNull
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
 
-    @Size(min = 6, max = 50)
-    @Pattern(regexp = "[A-Za-z1-9]")
-    @NotNull
+    @Column(nullable = false)
     private String password;
 
-    @Column(name = "full_name")
+    @Column(name = "full_name", nullable = false)
     private String fullName;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Role role;
 
-    @ManyToMany
-    @JoinTable
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Game> games;
 }
