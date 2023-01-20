@@ -51,4 +51,9 @@ public class UserServiceImpl implements UserService {
             System.out.println("Cannot log out. No user was logged in.");
         }
     }
+
+    @Override
+    public boolean isLoggedUserAdmin() {
+        return !this.userDto.getRole().equals(Role.ADMIN);
+    }
 }
